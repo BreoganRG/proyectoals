@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Biblioteca de libros</title>
+</head>
+<body>
+
+{% if escritores.count() > 0 %}
+<table class="default" border="1" align="center">
+
+  <tr>
+    <td colspan="5">
+      <div align="center">
+      LISTADO DE ESCRITORES
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <th>NOMBRE</th>
+    <th>APELLIDOS</th>
+    <th>EDAD</th>
+    <th>ACCIONES</th>
+
+
+  </tr>
+{% for escritor in escritores %}
+  <tr>
+    <td>
+        {{ escritor.nombre }}
+    </td>
+    <td>
+         {{ escritor.apellidos }}
+    </td>
+    <td>
+        {{ escritor.edad}}
+    </td>
+    <td><a href="/escritor/eliminar?id={{ escritor.key.urlsafe ()}}"> Eliminar</a>
+        <a href="/escritor/modificar?id={{ escritor.key.urlsafe ()}}"> Modificar</a>
+    </td>
+  </tr>
+{% endfor %}
+{% else %}
+<p align="center">NO HAY ESCRITORES<p>
+{% endif %}
+
+</table>
+    <br>
+    <div id="Acciones" align="center">
+        <a href="/"> VOLVER </a>
+        <br>
+        <br>
+        <a href="/escritor/nuevo"> AÑADIR ESCRITOR </a>
+    </div>
+
+</body>
+</html>

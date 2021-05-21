@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Añadir un nuevo libro</title>
+
+    <script>
+
+        function check(){
+            const edTitulo = document.getElementById("edTitulo")
+            const edEscritor = document.getElementById("edEscritor")
+            const edISBN = document.getElementById("edISBN")
+            const edEditorial = document.getElementById("edEditorial")
+
+            return( edTitulo.value.trim().length > 0 &&
+                edEscritor.value.trim().length > 0 &&
+                edISBN.value.trim().length > 0 &&
+                edEditorial.value.trim().length > 0
+            )
+        }
+
+    </script>
+</head>
+<body>
+    <form id="formNuevoLibro" method="post" action="/libros/nuevo" onsubmit="return check()">
+        <p align="center">
+        <label for="edTitulo"> Titulo </label>
+        <input type="text" id="edTitulo" name="edTitulo" placeholder="Escriba el título" >
+         </p>
+
+        <p align="center">
+        <label for="edEscritor">Introduce el escritor: </label>
+        <select name="edEscritor" id="EdEscritor">
+
+        {% for escritor in escritores %}
+            <option value={{ escritor.key.id() }}>{{escritor.nombre}} {{escritor.apellidos}}</option>
+        {% endfor %}
+        </select>
+        </p>
+
+        <p align="center">
+        <label for="edISBN"> ISBN </label>
+        <input type="number" id="edISBN" name="edISBN" placeholder="Escriba el ISBM"
+                step="1">
+         </p>
+
+        <p align="center">
+        <label for="edEditorial">Introduce la editorial: </label>
+        <select name="edEditorial" id="EdEditorial">
+        {% for editorial in editoriales %}
+            <option value={{ editorial.key.id() }}>{{editorial.nombre}}</option>
+        {% endfor %}
+        </select>
+        </p>
+
+        <p align="center">
+        <input type="submit" value="Añadir libro">
+         </p>
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modificar Escritor</title>
+
+    <script>
+
+        function check(){
+            const edNombre = document.getElementById("edNombre")
+            const edCodigo = document.getElementById("edCodigo")
+            const edEditorial = document.getElementById("edEditorial")
+
+            return( edNombre.value.trim().length > 0 &&
+                edEditorial.value.trim().length > 0 &&
+                edCodigo.value.trim().length > 0
+            )
+        }
+
+    </script>
+</head>
+<body>
+    <form id="formModificarEditorial" method="post" action="/editorial/modificar" onsubmit="return check()">
+
+        <p align="center">
+        <label for="edNombre"> Nombre </label>
+        <input type="text" id="edNombre" name="edNombre" value= {{ editorial.nombre }}  >
+         </p>
+
+        <input id="edEditorial" name="edEditorial" style="display: none" value= {{ editorial.key.id() }}>
+
+
+        <p align="center">
+        <label for="edCodigo"> Edad </label>
+        <input type="number" id="edCodigo" name="edCodigo" value={{ editorial.codigoEditorial }}
+                step="1">
+         </p>
+
+
+
+        <p align="center">
+        <input type="submit" value="MODIFICAR EDITORIAL">
+         </p>
+
+    </form>
+</body>
+</html>

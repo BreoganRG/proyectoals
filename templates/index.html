@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Biblioteca de libros</title>
+</head>
+<body>
+    {% if usr %}
+    ! Hola {{ nickname }}
+    ¡Haz <a href="{{ url_usr }}"> logout </a> !
+    {% else %}
+            ¡Haz <a href="{{ url_usr }}"> login </a>  para poder usar esta web!
+    {% endif %}
+{% if libros.count() > 0 %}
+<table class="default" border="1" align="center">
+
+  <tr>
+    <td colspan="5">
+      <div align="center">
+      LISTADO DE LIBROS
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <th>TITUTOL</th>
+    <th>ESCRITOR</th>
+    <th>ISBN</th>
+    <th>EDITORIAL</th>
+    <th>ACCIONES</th>
+
+
+  </tr>
+{% for libro in libros %}
+  <tr>
+    <td>
+        {{ libro.titulo }}
+    </td>
+    <td>
+        <a href="/escritor/detalle?id={{ libro.escritor.urlsafe() }}"> {{ libro.nombreEscritor }} {{ libro.apellidosEscritor }}</a>
+    </td>
+    <td>
+        {{ libro.ISBN}}
+    </td>
+    <td>
+        <a href="/editorial/detalle?id={{ libro.editorial.urlsafe() }}"> {{ libro.nombreEditorial }}</a>
+    </td>
+    <td><a href="/libros/eliminar?id={{ libro.key.urlsafe ()}}"> Eliminar</a>
+        <a href="/libros/modificar?id={{ libro.key.urlsafe ()}}"> Modificar</a>
+    </td>
+  </tr>
+{% endfor %}
+{% else %}
+<p align="center">NO HAY LIBROS<p>
+{% endif %}
+
+</table>
+    <br>
+    <div id="Acciones" align="center">
+        <a href="/libros/nuevo"> Añadir libro </a>
+        <br>
+        <br>
+        <a href="/escritor/nuevo"> Añadir escritor </a>
+        <br>
+        <br>
+        <a href="/editorial/nuevo"> Añadir editorial </a>
+        <br>
+        <br>
+        <a href="/escritor/escritores"> VER TODOS LOS ESCRITORES </a>
+        <br>
+        <br>
+        <a href="/editorial/editoriales"> VER TODAS LAS EDITORIALES </a>
+    </div>
+</body>
+</html>

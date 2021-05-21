@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Añadir un nuevo libro</title>
+    <script>
+
+        function check(){
+            const edNombre = document.getElementById("edNombre")
+            const edApellidos = document.getElementById("edApellidos")
+            const edEdad= document.getElementById("edEdad")
+
+            return( edNombre.value.trim().length > 0 &&
+                edApellidos.value.trim().length > 0 &&
+                edEdad.value.trim().length > 0
+            )
+        }
+
+    </script>
+</head>
+<body>
+    <form id="formNuevoEscritor" method="post" action="/escritor/nuevo" onsubmit="return check()">
+        <p align="center">
+        <label for="edNombre"> Nombre escritor: </label>
+        <input type="text" id="edNombre" name="edNombre"
+               placeholder="Escriba el nombre del escritor" >
+         </p>
+
+        <p align="center">
+        <label for="edApellidos"> Apellidos escritor </label>
+        <input type="text" id="edApellidos" name="edApellidos"
+               placeholder="Escriba los apellidos del escritor" >
+         </p>
+
+
+        <p align="center">
+        <label for="edEdad"> Edad escritor </label>
+        <input type="number" id="edEdad" name="edEdad" min="10" value="10" placeholder="Escriba la edad">
+         </p>
+
+        <p align="center">
+        <input type="submit" value="Añadir escritor">
+         </p>
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Biblioteca de libros</title>
+</head>
+<body>
+
+{% if editoriales.count() > 0 %}
+<table class="default" border="1" align="center">
+
+  <tr>
+    <td colspan="5">
+      <div align="center">
+      LISTADO DE EDITORIALES
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <th>NOMBRE</th>
+    <th>CODIGO EDITORIAL</th>
+    <th>ACCIONES</th>
+
+
+  </tr>
+{% for editorial in editoriales %}
+  <tr>
+    <td>
+        {{ editorial.nombre }}
+    </td>
+    <td>
+         {{ editorial.codigoEditorial }}
+    </td>
+    <td><a href="/editorial/eliminar?id={{ editorial.key.urlsafe ()}}"> Eliminar</a>
+        <a href="/editorial/modificar?id={{ editorial.key.urlsafe ()}}"> Modificar</a>
+    </td>
+  </tr>
+{% endfor %}
+{% else %}
+<p align="center">NO HAY EDITORIALES<p>
+{% endif %}
+
+</table>
+    <br>
+    <div id="Acciones" align="center">
+        <a href="/"> VOLVER </a>
+        <br>
+        <br>
+        <a href="/editorial/nuevo"> AÑADIR EDITORIAL </a>
+    </div>
+</body>
+</html>

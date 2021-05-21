@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modificar Escritor</title>
+
+    <script>
+
+        function check(){
+            const edNombre = document.getElementById("edNombre")
+            const edApellidos = document.getElementById("edApellidos")
+            const edEdad = document.getElementById("edEdad")
+            const edEscritor = document.getElementById("edEscritor")
+
+            return( edNombre.value.trim().length > 0 &&
+                edEscritor.value.trim().length > 0 &&
+                edApellidos.value.trim().length > 0 &&
+                edEdad.value.trim().length > 0
+            )
+        }
+
+    </script>
+</head>
+<body>
+    <form id="formNuevoLibro" method="post" action="/escritor/modificar" onsubmit="return check()">
+        <p align="center">
+        <label for="edNombre"> Nombre </label>
+        <input type="text" id="edNombre" name="edNombre" value= {{ escritor.nombre }}  >
+         </p>
+
+        <input id="edEscritor" name="edEscritor" style="display: none" value= {{ escritor.key.id() }}>
+
+        <p align="center">
+        <label for="edApellidos"> Apellidos </label>
+        <input type="text" id="edApellidos" name="edApellidos" value= {{ escritor.apellidos }}  >
+         </p>
+
+        <p align="center">
+        <label for="edEdad"> Edad </label>
+        <input type="number" id="edEdad" name="edEdad" value={{ escritor.edad }}
+                step="1">
+         </p>
+
+
+
+        <p align="center">
+        <input type="submit" value="MODIFICAR ESCRITOR">
+         </p>
+
+    </form>
+</body>
+</html>

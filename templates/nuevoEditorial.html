@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Añadir una nueva editorial</title>
+    <script>
+
+        function check(){
+            const edNombre = document.getElementById("edNombre")
+            const edEdad= document.getElementById("edCodigo")
+
+            return( edNombre.value.trim().length > 0 &&
+                edEdad.value.trim().length > 0
+            )
+        }
+
+    </script>
+</head>
+<body>
+    <form id="formNuevoEditorial" method="post" action="/editorial/nuevo" onsubmit="return check()">
+        <p align="center">
+        <label for="edNombre"> Nombre editorial: </label>
+        <input type="text" id="edNombre" name="edNombre"
+               placeholder="Escriba el nombre de editorial" >
+         </p>
+
+
+        <p align="center">
+        <label for="edCodigo"> Código de editorial </label>
+        <input type="number" id="edCodigo" name="edCodigo" min="1" max="1000" value="10"
+               placeholder="Escriba el codigo de editorial">
+         </p>
+
+        <p align="center">
+        <input type="submit" value="Añadir editorial">
+         </p>
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,75 @@
+application: proyectoals
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /
+  script: handlers.main.app
+
+- url: /libros/nuevo
+  script: handlers.libros.nuevo.app
+  login: required
+
+- url: /libros/eliminar
+  script: handlers.libros.eliminar.app
+  login: required
+
+- url: /libros/modificar
+  script: handlers.libros.modificar.app
+  login: required
+
+- url: /escritor/nuevo
+  script: handlers.escritor.nuevo.app
+  login: required
+
+- url: /escritor/detalle
+  script: handlers.escritor.detalle.app
+  login: required
+
+- url: /escritor/eliminar
+  script: handlers.escritor.eliminar.app
+  login: required
+
+- url: /escritor/modificar
+  script: handlers.escritor.modificar.app
+  login: required
+
+- url: /editorial/eliminar
+  script: handlers.editorial.eliminar.app
+  login: required
+
+- url: /escritor/escritores
+  script: handlers.escritor.escritores.app
+  login: required
+
+- url: /editorial/nuevo
+  script: handlers.editorial.nuevo.app
+  login: required
+
+- url: /editorial/detalle
+  script: handlers.editorial.detalle.app
+  login: required
+
+- url: /editorial/editoriales
+  script: handlers.editorial.editoriales.app
+  login: required
+
+- url: /editorial/modificar
+  script: handlers.editorial.modificar.app
+  login: required
+
+- url: .*
+  script: handlers.main.app
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
+
+- name: jinja2
+  version: "latest"
